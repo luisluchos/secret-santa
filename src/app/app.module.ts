@@ -3,10 +3,14 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { SecretSantaBoardComponent } from './secret-santa-board/secret-santa-board.component';
+import { SecretSantaCardComponent } from './secret-santa-card/secret-santa-card.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    SecretSantaBoardComponent,
+    SecretSantaCardComponent
   ],
   imports: [
     BrowserModule,
