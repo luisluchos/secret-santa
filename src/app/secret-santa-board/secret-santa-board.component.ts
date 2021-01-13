@@ -6,7 +6,7 @@ type SecretSantaItemObj = {
   name_hidden: string;
 };
 
-function Parejas (name:string, nameHidden:string) {  //nuestro array va a estar compuesto por objetos(parejas, con un name y un name_hidden)
+function Parejas (name:string, nameHidden:string) {  //nuestro dupla va a estar compuesto por objetos(parejas, con un name y un name_hidden)
   this.name_displayed = name;
   this.name_hidden = nameHidden;
 };
@@ -22,7 +22,7 @@ function Parejas (name:string, nameHidden:string) {  //nuestro array va a estar 
 export class SecretSantaBoardComponent implements OnInit {
 
   friendsList: string[] = names; //lo traigo del archivo assets/json/names.ts
-  secretSantaList: SecretSantaItemObj[]= [];
+  secretSantaList: SecretSantaItemObj[]= []; //el array de objetos donde iremos metiendo las parejas, lo suaremos para luego mostrarlo por html
   suffle_list:  string[];
 
   newFriendlist: any = [ ]; //nueva lista con loas participantes correctos que no coinciden
@@ -62,8 +62,9 @@ while (this.friendsList.length > 0) {
       this.suffle_list= this.suffle_list.filter(item=>item !== value_hidden)
 
 // creamos un array de objetos, que contendrán las parejas
-      var creacion_parejas = new Parejas (value, value_hidden); //creamos el objeto, En function Parejas le hemos marcado la estructura, (le tenemos que pasar dos parametros para que moneten el name y el name_hidden)
+      var creacion_parejas = new Parejas (value, value_hidden); //creamos la dupla, En function Parejas le hemos marcado la estructura, (le tenemos que pasar dos parametros para que moneten el name y el name_hidden)
       this.secretSantaList.push(creacion_parejas); //con push lo metemos en el array de secretSanta, al final tendremos un array de objetos
+      console.log("nooo");
 
 // volvemos a hacer suffle a los dos arrays
       this.friendsList = this.friendsList.slice().sort(function(){
@@ -76,6 +77,7 @@ while (this.friendsList.length > 0) {
 
     }
 })}
+
 
       console.log("new friend list",this.newFriendlist);
       console.log("new sufflelist",this.newSuffleList);
